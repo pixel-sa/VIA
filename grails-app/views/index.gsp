@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta name="layout" content="main"/>
-		<title>Welcome to Grails</title>
+		<title>VIA CODEATHON</title>
 		<style type="text/css" media="screen">
 			#status {
 				background-color: #eee;
