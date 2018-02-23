@@ -4,14 +4,17 @@ import com.via.auth.User
 
 class UserProfile {
     String email
-    String name
+    String firstName
+    String lastName
     String phone
 
-    static belongsTo = [User]
+    static belongsTo = [user: User]
+    static hasMany = [route: Route, trip: Trip]
 
     static constraints = {
         email nullable: false, unique: true
-        name nullable: false
+        firstName nullable: false
+        lastName nullable: false
         phone nullable: true
     }
 }
