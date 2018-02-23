@@ -14,11 +14,23 @@
 <body>
 
     <div class="container">
-        <div class="col-sm-12 text-center">
-            <p>BUS PROFILE</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+        <div class="col-sm-12">
+            <h1>BUS PROFILE</h1>
+
+            <h3>Set Up Route:</h3>
+            <div class="input-group" id="starting-address-div">
+                <input type="text" class="form-control" placeholder="Starting Address" id="starting-address-input">
+            </div>
         </div>
     </div>
+
+        <asset:script>
+            BUS.init();
+        </asset:script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyx0uEogAaWBQzcFkUAnz0vAC0I12pZNc&libraries=places"
+    async defer></script>
+
 
 </body>
 </html>
