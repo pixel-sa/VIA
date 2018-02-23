@@ -8,9 +8,7 @@
 * compiled file, but it's generally better to create a new file per style scope.
 *
 
-*= require simplex
+*= require custom
 *= require_self
 */
 
-/**= require main*/
-/**= require mobile*/
