@@ -25,15 +25,18 @@
 		%{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">--}%
 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/simplex/bootstrap.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 
 		%{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/paper/bootstrap.min.css">--}%
 
-  		%{--<asset:stylesheet src="application.css"/>--}%
+  		<asset:stylesheet src="application.css"/>
 		<asset:javascript src="application.js"/>
+
 		<g:layoutHead/>
 	</head>
 	<body>
-		%{--<div id="grailsLogo" role="banner"><a href="http://grails.org"><asset:image src="grails_logo.png" alt="Grails"/></a></div>--}%
+
+	%{--<div id="grailsLogo" role="banner"><a href="http://grails.org"><asset:image src="grails_logo.png" alt="Grails"/></a></div>--}%
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
@@ -44,11 +47,13 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="/" >
-						<asset:image alt="via-logo" src="SVG-via-logo.svg" height="25"/>
+					<a class="navbar-brand" id="logo" href="/">
+						<asset:image alt="via-logo" src="SVG-busvi-logo.svg"/>
 					</a>
 
-					<sec:ifLoggedIn>
+					<h1 class="brand brand-name navbar-left">Busvi</h1>
+
+				<sec:ifLoggedIn>
 							Welcome, <sec:username />
 					</sec:ifLoggedIn>
 				</div>

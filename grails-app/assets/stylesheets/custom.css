@@ -1,0 +1,30 @@
+/*.navbar {*/
+    /*border: 0;*/
+    /*z-index: 9999;*/
+    /*letter-spacing: 4px;*/
+
+/*}*/
+
+#logo {
+    display: block;
+    height: auto;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.navbar-default{
+    /*background-color: #FFEAA7;*/
+}
+
+.navbar-brand>img {
+    height: 75px;
+    width: auto;
+}
+
+.brand{
+    font-family: 'Pacifico', cursive;
+    color: #0079E4;
+}
+/*.navbar .nav > li > a {*/
+    /*line-height: 50px;*/
+/*}*/
