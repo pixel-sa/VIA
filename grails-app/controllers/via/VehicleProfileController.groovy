@@ -4,7 +4,7 @@ import grails.plugin.springsecurity.annotation.Secured
 
 
 @Secured(['permitAll'])
-class ApplicationController {
+class VehicleProfileController {
 
     def vehiclesService
     def gasPricesService

@@ -28,3 +28,12 @@
 /*.navbar .nav > li > a {*/
     /*line-height: 50px;*/
 /*}*/
+
+#vehicleForm {
+    margin: 30px auto 15px auto;
+}
+
+.vehicleSelect {
+    min-width: 80px;
+    margin-right: 20px;
+}

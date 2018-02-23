@@ -19,12 +19,12 @@ hibernate {
 environments {
     development {
         dataSource {
-            username = //enter username for local db here
-            password = //enter password for local db here
+            username = "root"
+            password = "codeup"
             pooled = true
             jmxExport = true
             driverClassName = "com.mysql.jdbc.Driver"
-            url = //enter url for local db here
+            url = "jdbc:mysql://localhost/pixel?useAffectedRows=true&useUnicode=yes"
             dbCreate = "update"
             dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
             properties {

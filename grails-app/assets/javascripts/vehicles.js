@@ -38,7 +38,7 @@ $(document).ready(function () {
             getEngines(model, make, year, function (vehicles) {
                 if (vehicles.length === 1){
                     // *** WINNER ***
-                    console.log(vehicles[0].combined)
+                    $("#vehicleResult").html("<h2 class='text-center'>Combined " + vehicles[0].combined + " MPG</h2>");
                 }else{
 
                     $.each(vehicles, function(i, vehicle){
@@ -48,7 +48,7 @@ $(document).ready(function () {
                     //TODO: check if comined MPG are the same.. if = then no need to pick from engine sizes
                     if (checkIfMPGSame(vehicles)){
                         // ** WINNER **
-                        console.log(vehicles[0].combined)
+                        $("#vehicleResult").html("<h2 class='text-center'>Combined " + vehicles[0].combined + " MPG</h2>");
                     }else {
                         //TODO: select from displacement and if still not to one then select from transmission
                         populateEngines(vehicles);
@@ -74,12 +74,13 @@ $(document).ready(function () {
 
             if(matchingVehicles.length === 1){
                 // ** WINNER **
-                console.log(matchingVehicles[0].combined);
+                $("#vehicleResult").html("<h2 class='text-center'>Combined " + matchingVehicles[0].combined + " MPG</h2>");
             }else{
                 console.log(matchingVehicles);
                 if(checkIfMPGSame(matchingVehicles)){
                     //** WINNER **
-                    console.log(matchingVehicles[0].combined);
+                    $("#vehicleResult").html("<h2 class='text-center'>Combined " + matchingVehicles[0].combined + " MPG</h2>");
+
                 }else {
                     //TODO: check to see what additional field to check to differentiate models.. possible transmission
                     populateTransmissions(matchingVehicles);
@@ -95,7 +96,8 @@ $(document).ready(function () {
             $.each(vehicles, function(i, vehicle) {
                 if (vehicle.transmission === transmission) {
                     //**WINNER **
-                    console.log(vehicle.combined);
+                    $("#vehicleResult").html("<h2 class='text-center'>Combined " + vehicle.combined + " MPG</h2>");
+
                 }
             })
         })
@@ -108,6 +110,9 @@ $(document).ready(function () {
 
 
     function populateMakes(makes) {
+        // resets info if year is changed
+        $("#model, #additionalVehicleForms, #vehicleResult").html('');
+
         var html = '';
         html += '<option value="">Select a make</option>';
         $.each(makes, function(i, make) {
@@ -117,6 +122,9 @@ $(document).ready(function () {
     }
 
     function populateModels(models) {
+        // resets info if year is changed
+        $("#additionalVehicleForms, #vehicleResult").html('');
+
         var html = '';
         html += '<option value="">Select a make</option>';
         $.each(models, function(i, model) {
@@ -126,9 +134,13 @@ $(document).ready(function () {
     }
 
     function populateEngines(vehicles) {
+        // resets info if year is changed
+        $("#vehicleResult").html('');
+
         var html = '';
+        html += '<div class="form-group">';
         html += '<label for="engine">Engine</label>';
-        html += '<select name="engine" id="engine">';
+        html += '<select name="engine" id="engine" class="vehicleSelect">';
         html += '<option value="">Select and engine size</option>';
 
         $.each(vehicles, function(i, vehicle) {
@@ -138,14 +150,16 @@ $(document).ready(function () {
         });
 
         html += '</select>';
-        $("#vehicleForm").append(html);
+        html += '</div>';
+        $("#additionalVehicleForms").html(html);
         bindEngineListenerToDom(vehicles);
     }
 
     function populateTransmissions(vehicles) {
         var html = '';
+        html += '<div class="form-group">';
         html += '<label for="transmission">Transmission</label>';
-        html += '<select name="transmission" id="transmission">';
+        html += '<select name="transmission" id="transmission" class="vehicleSelect">';
         html += '<option value="">Select Transmission</option>';
 
         $.each(vehicles, function(i, vehicle){
@@ -153,7 +167,8 @@ $(document).ready(function () {
         });
 
         html += '</select>';
-        $("#vehicleForm").append(html);
+        html += '</div>';
+        $("#additionalVehicleForms").append(html);
         bindTransmissionListenerToDom(vehicles);
     }
 
@@ -164,7 +179,7 @@ $(document).ready(function () {
 
     function getMakes(year, callback) {
         $.ajax({
-            url: "/application/getMakes?year=" + year,
+            url: "/vehicleProfile/getMakes?year=" + year,
             success: function(response) {
                 if(response && response.result){
                     callback(response.data)
@@ -179,7 +194,7 @@ $(document).ready(function () {
 
     function getModels(make, year, callback) {
         $.ajax({
-            url: "/application/getModels?make=" + make + "&year=" + year,
+            url: "/vehicleProfile/getModels?make=" + make + "&year=" + year,
             success: function(response) {
                 if(response && response.result){
                     callback(response.data)
@@ -193,7 +208,7 @@ $(document).ready(function () {
 
     function getEngines(model, make, year, callback) {
         $.ajax({
-            url: "/application/getEngines?model=" + model + "&make=" + make + "&year=" + year,
+            url: "/vehicleProfile/getEngines?model=" + model + "&make=" + make + "&year=" + year,
             success: function(response) {
                 if(response && response.result){
                     callback(response.data)

@@ -65,6 +65,8 @@
 						<sec:ifLoggedIn>
 							<li><a href="${createLink(controller: "dashboard", action: "index")}">Dashboard</a></li>
 
+							<li><a href="${createLink(controller: "vehicleProfile", action: "index")}">Vehicle Profile</a></li>
+
 							<li><a href="${createLink(controller: "busProfile", action: "index")}">Bus Profile</a></li>
 
 							<li><a href="${createLink(controller: "logout")}">Logout</a></li>

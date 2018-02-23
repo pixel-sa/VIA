@@ -6,7 +6,7 @@
 
 </head>
 <body>
-<h1>team pixel test home page</h1>
+<h1 class="text-center">Vehicle Profile</h1>
 
 <g:render template="vehicles" />
 <g:render template="gasPrice" />
