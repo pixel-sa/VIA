@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta name="layout" content="main"/>
-	<title>Team Pixel Home Page</title>
+	<title>Vehicle Profile</title>
 
 </head>
 <body>
