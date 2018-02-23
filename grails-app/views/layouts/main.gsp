@@ -29,7 +29,7 @@
 
 		%{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/paper/bootstrap.min.css">--}%
 
-  		<asset:stylesheet src="application.css"/>
+	<asset:stylesheet src="application.css"/>
 		<asset:javascript src="application.js"/>
 
 		<g:layoutHead/>
@@ -67,9 +67,6 @@
 
 							<li><a href="${createLink(controller: "tripProfile", action: "index")}">Bus Profile</a></li>
 							<li><a href="${createLink(controller: "vehicleProfile", action: "index")}">Vehicle Profile</a></li>
-
-							<li><a href="${createLink(controller: "busProfile", action: "index")}">Bus Profile</a></li>
-
 							<li><a href="${createLink(controller: "logout")}">Logout</a></li>
 						</sec:ifLoggedIn>
 
