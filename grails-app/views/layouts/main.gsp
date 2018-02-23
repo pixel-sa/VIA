@@ -65,6 +65,7 @@
 						<sec:ifLoggedIn>
 							<li><a href="${createLink(controller: "dashboard", action: "index")}">Dashboard</a></li>
 
+							<li><a href="${createLink(controller: "tripProfile", action: "index")}">Bus Profile</a></li>
 							<li><a href="${createLink(controller: "vehicleProfile", action: "index")}">Vehicle Profile</a></li>
 
 							<li><a href="${createLink(controller: "busProfile", action: "index")}">Bus Profile</a></li>
@@ -103,8 +104,9 @@
 
 
 		<g:layoutBody/>
-		<div class="footer" role="contentinfo"></div>
-		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
+		%{--<div class="footer" role="contentinfo"></div>--}%
+		%{--<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>--}%
+		%{--<g:layoutFooter/>--}%
 
 		%{--<span>--}%
 			%{--<div id='loginLinkContainer'>--}%

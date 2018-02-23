@@ -23,5 +23,4 @@ class ServiceResponse {
         result = object
         success = Boolean.TRUE
     }
-
 }
