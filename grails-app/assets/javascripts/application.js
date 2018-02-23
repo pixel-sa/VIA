@@ -7,7 +7,7 @@
 //
 //= require jquery
 //= require bootstrap
-//= require_tree .
+//= require_tree client
 //= require_self
 
 if (typeof jQuery !== 'undefined') {
