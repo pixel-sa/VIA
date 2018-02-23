@@ -5,40 +5,118 @@
 <!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"><!--<![endif]-->
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		%{--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">--}%
+		%{--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">--}%
 		<title><g:layoutTitle default="Grails"/></title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		%{--<meta name="viewport" content="width=device-width, initial-scale=1.0">--}%
 		<link rel="shortcut icon" href="${assetPath(src: 'favicon.ico')}" type="image/x-icon">
 		<link rel="apple-touch-icon" href="${assetPath(src: 'apple-touch-icon.png')}">
 		<link rel="apple-touch-icon" sizes="114x114" href="${assetPath(src: 'apple-touch-icon-retina.png')}">
-  		<asset:stylesheet src="application.css"/>
+
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		%{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">--}%
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/simplex/bootstrap.min.css">
+
+		%{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/paper/bootstrap.min.css">--}%
+
+  		%{--<asset:stylesheet src="application.css"/>--}%
 		<asset:javascript src="application.js"/>
 		<g:layoutHead/>
 	</head>
 	<body>
-		<div id="grailsLogo" role="banner"><a href="http://grails.org"><asset:image src="grails_logo.png" alt="Grails"/></a></div>
+		%{--<div id="grailsLogo" role="banner"><a href="http://grails.org"><asset:image src="grails_logo.png" alt="Grails"/></a></div>--}%
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/" >
+						<asset:image alt="via-logo" src="SVG-via-logo.svg" height="25"/>
+					</a>
+
+					<sec:ifLoggedIn>
+							Welcome, <sec:username />
+					</sec:ifLoggedIn>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+					<ul class="nav navbar-nav navbar-right">
+						<sec:ifLoggedIn>
+							<li><a href="${createLink(controller: "dashboard", action: "index")}">Dashboard</a></li>
+
+							<li><a href="${createLink(controller: "busProfile", action: "index")}">Bus Profile</a></li>
+
+							<li><a href="${createLink(controller: "logout")}">Logout</a></li>
+						</sec:ifLoggedIn>
+
+						<sec:ifNotLoggedIn>
+							<li><a href="${createLink(controller: "login")}">Login</a></li>
+						</sec:ifNotLoggedIn>
+
+						<sec:ifSwitched>
+							<a href='${request.contextPath}/j_spring_security_exit_user'>
+								Resume as <sec:switchedUserOriginalUsername />
+							</a>
+						</sec:ifSwitched>
+
+						%{--<li class="dropdown">--}%
+							%{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>--}%
+							%{--<ul class="dropdown-menu">--}%
+								%{--<li><a href="#">Action</a></li>--}%
+								%{--<li><a href="#">Another action</a></li>--}%
+								%{--<li><a href="#">Something else here</a></li>--}%
+								%{--<li role="separator" class="divider"></li>--}%
+								%{--<li><a href="#">Separated link</a></li>--}%
+							%{--</ul>--}%
+						%{--</li>--}%
+					</ul>
+				</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
+
+
+
+
+
+
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 
-		<span>
-			<div id='loginLinkContainer'>
-				<sec:ifLoggedIn>
-					Logged in as <sec:username /> (<g:link controller='logout'>Logout</g:link>)
-				</sec:ifLoggedIn>
-				<sec:ifNotLoggedIn>
-					<g:link controller='login'>Login</g:link>
-				</sec:ifNotLoggedIn>
+		%{--<span>--}%
+			%{--<div id='loginLinkContainer'>--}%
+				%{--<sec:ifLoggedIn>--}%
+					%{--Logged in as <sec:username /> (<g:link controller='logout'>Logout</g:link>)--}%
+				%{--</sec:ifLoggedIn>--}%
+				%{--<sec:ifNotLoggedIn>--}%
+					%{--<g:link controller='login'>Login</g:link>--}%
+				%{--</sec:ifNotLoggedIn>--}%
 
-				<sec:ifSwitched>
-					<a href='${request.contextPath}/j_spring_security_exit_user'>
-						Resume as <sec:switchedUserOriginalUsername />
-					</a>
-				</sec:ifSwitched>
-			</div>
-		</span>
+				%{--<sec:ifSwitched>--}%
+					%{--<a href='${request.contextPath}/j_spring_security_exit_user'>--}%
+						%{--Resume as <sec:switchedUserOriginalUsername />--}%
+					%{--</a>--}%
+				%{--</sec:ifSwitched>--}%
+			%{--</div>--}%
+		%{--</span>--}%
 
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 	</body>
 </html>
