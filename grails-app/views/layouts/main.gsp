@@ -27,14 +27,15 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/simplex/bootstrap.min.css">
 		<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 
-		%{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/paper/bootstrap.min.css">--}%
 
   		<asset:stylesheet src="application.css"/>
+
 		<asset:javascript src="application.js"/>
 
 		<g:layoutHead/>
 	</head>
 	<body>
+
 
 	%{--<div id="grailsLogo" role="banner"><a href="http://grails.org"><asset:image src="grails_logo.png" alt="Grails"/></a></div>--}%
 		<nav class="navbar navbar-default">
@@ -65,7 +66,7 @@
 						<sec:ifLoggedIn>
 							<li><a href="${createLink(controller: "dashboard", action: "index")}">Dashboard</a></li>
 
-							<li><a href="${createLink(controller: "busProfile", action: "index")}">Bus Profile</a></li>
+							<li><a href="${createLink(controller: "tripProfile", action: "index")}">Bus Profile</a></li>
 
 							<li><a href="${createLink(controller: "logout")}">Logout</a></li>
 						</sec:ifLoggedIn>
@@ -101,8 +102,9 @@
 
 
 		<g:layoutBody/>
-		<div class="footer" role="contentinfo"></div>
-		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
+		%{--<div class="footer" role="contentinfo"></div>--}%
+		%{--<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>--}%
+		%{--<g:layoutFooter/>--}%
 
 		%{--<span>--}%
 			%{--<div id='loginLinkContainer'>--}%
@@ -121,7 +123,7 @@
 			%{--</div>--}%
 		%{--</span>--}%
 
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	%{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>--}%
 
 	</body>
 </html>
