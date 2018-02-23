@@ -1,8 +1,9 @@
 package via
 
-import javax.annotation.security.PermitAll
+import grails.plugin.springsecurity.annotation.Secured
 
-@PermitAll
+
+@Secured(['permitAll'])
 class ApplicationController {
 
     def vehiclesService
