@@ -7,6 +7,7 @@
 //
 //= require jquery
 //= require bootstrap
+//= require_tree vendor
 //= require_tree client
 //= require_self
 
