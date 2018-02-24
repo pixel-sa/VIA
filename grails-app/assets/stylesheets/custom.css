@@ -29,6 +29,10 @@
     /*line-height: 50px;*/
 /*}*/
 
+.error {
+    color: #ff0000;
+}
+
 #vehicleForm {
     margin: 30px auto 15px auto;
 }
@@ -36,4 +40,8 @@
 .vehicleSelect {
     min-width: 80px;
     margin-right: 20px;
+}
+
+.centerByMargin {
+    margin: 0 auto;
 }

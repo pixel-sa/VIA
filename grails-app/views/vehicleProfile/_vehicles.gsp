@@ -1,5 +1,5 @@
 <div class="col-md-8 col-md-offset-2 col-xs-12">
-    <div id="vehicleForm" class="form-inline text-center">
+    <div id="vehicleForm" class="form-inline text-center" >
         <div class="form-group">
             <label for="year">Year:</label>
             <select name="year" id="year" class="vehicleSelect">
@@ -55,6 +55,7 @@
     <div id="additionalVehicleForms" class="form-inline text-center">
          %{--if additional vehicle attributes are needed to narrow down selection they will populate here--}%
     </div>
+    <p id="vehicleFormError" class="error"></p>
     <div id="vehicleResult">
         %{--for now results will be displayed here for testing--}%
     </div>

@@ -12,7 +12,8 @@ class UserService {
     def saveUserProfile(params){
         ServiceResponse serviceResponse = new ServiceResponse()
         try{
-            User user = springSecurityService.principal
+            def userId = springSecurityService.principal.id
+            User user = User.findById(userId as Long)
 
             UserProfile userProfile = new UserProfile()
             userProfile.email = params.email
@@ -32,6 +33,17 @@ class UserService {
             serviceResponse.fail("Error saving user profile")
         }
         return serviceResponse
+    }
+
+    def getLoggedInUserProfile(){
+        try{
+            def userId = springSecurityService.principal.id
+            User user = User.findById(userId as Long)
+            UserProfile userProfile = UserProfile.findByUser(user)
+            return userProfile
+        }catch (Exception e){
+            log.error(e)
+        }
     }
 
 }

@@ -33,7 +33,6 @@ $(document).ready(function () {
             console.log(place);
             startingAddress = place[0].formatted_address;
             origin1 = startingAddress;
-            calculateDistance();
 
         });
 
@@ -51,7 +50,6 @@ $(document).ready(function () {
             console.log(place);
             endingAddress = place[0].formatted_address;
             destination1 = endingAddress;
-            calculateDistance();
         });
 
         //when submit button clicked, geocoding will run
@@ -121,12 +119,11 @@ $(document).ready(function () {
         $.ajax({
             url:"/tripProfile/saveTripInformation" + params,
             success: function (response) {
-                console.log(response);
-                callback(response);
-            },
-            error: function () {
-                // show error
-                console.log("error saving trip information");
+                if (response && response.result) {
+                window.location.href = "/dashboard/index";
+                }else{
+                    $("#routeSetupError").text(response.errors);
+                }
             }
         })
 

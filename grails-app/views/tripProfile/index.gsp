@@ -20,19 +20,8 @@
 <body>
 
     <div class="container">
-        <div class="col-sm-12">
-            <h1>BUS PROFILE</h1>
-
-            <h3>Set Up Route:</h3>
-            <div class="input-group" id="starting-address-div">
-                <input type="text" class="form-control" placeholder="Starting Address" id="starting-address-input">
-            </div>
-
-            <div class="input-group" id="ending-address-div">
-                <input type="text" class="form-control" placeholder="Ending Address" id="ending-address-input">
-            </div>
-            <button id="test-btn" type="submit">click me</button>
-        </div>
+        <h1 class="text-center">BUS PROFILE</h1>
+        <g:render template="routeForm" />
     </div>
 
 

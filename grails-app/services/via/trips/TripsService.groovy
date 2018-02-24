@@ -2,20 +2,34 @@ package via.trips
 
 import com.via.auth.User
 import grails.transaction.Transactional
+import via.Route
 import via.ServiceResponse
+import via.UserProfile
 
 @Transactional
 class TripsService {
-    def springSecurityService
+    def userService
 
     def saveTripInformation(params){
-        println(params)
         ServiceResponse serviceResponse = new ServiceResponse()
         try{
-            User user = User.get(springSecurityService.principal.id)
-            println(user)
-            println(user.id)
+            UserProfile userProfile = userService.getLoggedInUserProfile()
+            log.info(userProfile)
+            Route route = new Route()
+            route.origin = params.startingAddress
+            route.destination = params.endingAddress
+            route.distanceInMiles = params.distanceInMiles
+            route.placeId = params.tripName
+            route.userProfile = userProfile
 
+            Route persistedRoute =  route.save(flush: true, failOnError: true)
+            if(persistedRoute){
+                serviceResponse.success(persistedRoute)
+            }else{
+                log.info(params)
+                log.info(route)
+                serviceResponse.fail("Failed to save route")
+            }
 
         }catch(Exception e){
             log.error("Error saving trip information: " + e)

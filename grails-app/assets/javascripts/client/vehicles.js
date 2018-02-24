@@ -38,6 +38,7 @@ $(document).ready(function () {
             getEngines(model, make, year, function (vehicles) {
                 if (vehicles.length === 1){
                     // *** WINNER ***
+                    saveUserVehicle(vehicles[0]);
                     $("#vehicleResult").html("<h2 class='text-center'>Combined " + vehicles[0].combined + " MPG</h2>");
                 }else{
 
@@ -48,6 +49,7 @@ $(document).ready(function () {
                     //TODO: check if comined MPG are the same.. if = then no need to pick from engine sizes
                     if (checkIfMPGSame(vehicles)){
                         // ** WINNER **
+                        saveUserVehicle(vehicles[0]);
                         $("#vehicleResult").html("<h2 class='text-center'>Combined " + vehicles[0].combined + " MPG</h2>");
                     }else {
                         //TODO: select from displacement and if still not to one then select from transmission
@@ -74,11 +76,13 @@ $(document).ready(function () {
 
             if(matchingVehicles.length === 1){
                 // ** WINNER **
+                saveUserVehicle(matchingVehicles[0]);
                 $("#vehicleResult").html("<h2 class='text-center'>Combined " + matchingVehicles[0].combined + " MPG</h2>");
             }else{
                 console.log(matchingVehicles);
                 if(checkIfMPGSame(matchingVehicles)){
                     //** WINNER **
+                    saveUserVehicle(matchingVehicles[0]);
                     $("#vehicleResult").html("<h2 class='text-center'>Combined " + matchingVehicles[0].combined + " MPG</h2>");
 
                 }else {
@@ -96,6 +100,7 @@ $(document).ready(function () {
             $.each(vehicles, function(i, vehicle) {
                 if (vehicle.transmission === transmission) {
                     //**WINNER **
+                    saveUserVehicle(vehicle);
                     $("#vehicleResult").html("<h2 class='text-center'>Combined " + vehicle.combined + " MPG</h2>");
 
                 }
@@ -218,6 +223,21 @@ $(document).ready(function () {
                 }
             }
         })
+    }
+
+    function saveUserVehicle(vehicle){
+        $.ajax({
+            url: "/dashboard/saveUserVehicle?vehicleId=" + vehicle.id,
+            success: function(response) {
+                if(response && response){
+                    $("#vehicleFormContainer").hide();
+                    $("#routeFormContainer").show()
+                }else{
+                    $("#vehicleFormError").text("")
+                }
+            }
+        })
+
     }
 
     <!--  ******** END AJAX requests **********   -->

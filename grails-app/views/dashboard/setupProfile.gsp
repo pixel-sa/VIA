@@ -26,8 +26,8 @@
                 <label for="phone">Mobile Number:</label>
                 <input type="text" name="phone" id="phone" class="form-control" />
             </div>
-            <div class="form-group">
-                <span class="error" id="setupUserError"></span>
+            <div class="form-group text-center">
+                <p class="error" id="setupUserError"></p>
                 <button type="submit" id="submitUserProfile" class="btn btn-default">Submit</button>
             </div>
         </form>
@@ -35,11 +35,16 @@
     </div>
     
 
+    <div id="vehicleFormContainer" style="display: none;">
+        <g:render template="../vehicleProfile/vehicles" />
+    </div>
 
+    <div id="routeFormContainer" style="display: none;"   >
+        <g:render template="../tripProfile/routeForm" />
+    </div>
 
-
-    <g:render template="../vehicleProfile/vehicles" />
-
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyx0uEogAaWBQzcFkUAnz0vAC0I12pZNc&libraries=places" ></script>
+<asset:javascript src="tripProfile.js"></asset:javascript>
 
 </body>
 </html>

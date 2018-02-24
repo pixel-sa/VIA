@@ -15,7 +15,7 @@ $(document).ready(function () {
         if(email.trim() === '' || firstName.trim() === '' || lastName.trim() === ''){
             $("#setupUserError").text("You must fill out all fields");
         }else{
-
+            saveUserProfile(email, firstName, lastName, phone)
         }
 
     });
@@ -32,12 +32,14 @@ $(document).ready(function () {
 
     <!--  ********  AJAX requests **********   -->
 
-    function submitUserProfile(email, firstName, lastName, phone) {
+    function saveUserProfile(email, firstName, lastName, phone) {
         $.ajax({
             url: "/dashboard/submitUserProfile?email=" + email + "&firstName=" + firstName + "&lastName=" + lastName + "&phone=" + phone,
             success: function(response) {
                 if(response && response.result) {
-                    console.log(response)
+                    $("#setupUserError").text("");
+                    $("#setupUserProfileForm").hide();
+                    $("#vehicleFormContainer").show();
                 }else {
                     $("#setupUserError").text("Error saving profile");
                 }
