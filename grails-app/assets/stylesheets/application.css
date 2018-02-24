@@ -9,6 +9,7 @@
 *
 
 *= require custom
+*= require_tree vendor
 *= require_self
 */
 
