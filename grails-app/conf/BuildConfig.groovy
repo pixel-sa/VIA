@@ -67,6 +67,7 @@ grails.project.dependency.resolution = {
         compile ":asset-pipeline:1.9.9"
         compile "org.grails.plugins:spring-security-core:2.0.0"
         compile "org.grails.plugins:spring-security-ui:1.0-RC3"
+        compile ":mail:1.0.7"
 
 
 

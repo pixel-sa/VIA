@@ -58,6 +58,18 @@ grails {
         // escapes all not-encoded output at final stage of outputting
         // filteringCodecForContentType.'text/html' = 'html'
     }
+
+    mail {
+        host = "smtp.gmail.com"
+        port = 465
+        username = "username"
+        password = "password"
+        props = ["mail.smtp.auth":"true",
+                 "mail.smtp.socketFactory.port":"465",
+                 "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+                 "mail.smtp.socketFactory.fallback":"false"]
+    }
+
 }
 
 
@@ -85,6 +97,10 @@ grails.hibernate.cache.queries = false
 grails.hibernate.pass.readonly = false
 // configure passing read-only to OSIV session by default, requires "singleSession = false" OSIV mode
 grails.hibernate.osiv.readonly = false
+
+grails.plugin.springsecurity.ui.register.postRegisterUrl = '/dashboard/setupProfile'
+
+grails.mail.default.from = "no-reply@busvi.com"
 
 environments {
     development {

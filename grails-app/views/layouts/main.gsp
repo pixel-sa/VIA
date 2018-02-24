@@ -71,7 +71,7 @@
 						</sec:ifLoggedIn>
 
 						<sec:ifNotLoggedIn>
-							<li><a href="${createLink(controller: "login")}">Login</a></li>
+							<li><a href="${createLink(controller: "login")}">Login/Register</a></li>
 						</sec:ifNotLoggedIn>
 
 						<sec:ifSwitched>
