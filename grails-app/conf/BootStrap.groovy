@@ -13,6 +13,9 @@ class BootStrap {
 //            UserRole.create(user, adminRole, true)
 //        }
 
+        //This will create user role
+        Role.findOrSaveWhere(authority: "ROLE_USER")
+
         //This set of code will populate BusFare table with current VIA bus rates
         //http://www.viainfo.net/rates/
 
