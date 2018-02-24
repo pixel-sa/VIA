@@ -6,4 +6,11 @@ import grails.plugin.springsecurity.annotation.Secured
 class DashboardController {
 
     def index() { }
+
+    def setupProfile() {}
+
+    def submitUserProfile() {
+        ServiceResponse serviceResponse = new ServiceResponse()
+    }
+
 }
