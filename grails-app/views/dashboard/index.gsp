@@ -10,8 +10,10 @@
     <head>
         <meta name="layout" content="tim"/>
         <title>Dashboard</title>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css">
     </head>
-    <body>
+    <body id="dashboard">
         %{--<div class="container">--}%
             %{--<div class="col-sm-12 text-center">--}%
             %{--<p>Hello World -- DASHBOARD</p>--}%
@@ -92,17 +94,80 @@
                         <a class="navbar-brand" href="#">Rider Dashboard </a>
                     </div>
 
-                    <div>
-                        <p>
-                        <button class="btn btn-white btn-round btn-just-icon">
-                            <i class="material-icons">directions_bus</i>
-                            <div class="ripple-container"></div>
-                        </button>
-                        Log Ride</p>
+                    %{--<div>--}%
+                        %{--<p>--}%
+                        %{--<button class="btn btn-white btn-round btn-just-icon">--}%
+                            %{--<i class="material-icons">directions_bus</i>--}%
+                            %{--<div class="ripple-container"></div>--}%
+                        %{--</button>--}%
+                        %{--Log Ride</p>--}%
+                    %{--</div>--}%
+
+                    %{--<button type="button" class="btn" id="log-trip-btn">Log a Trip</button>--}%
+
+                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                            data-target="#log-trip-modal">Log Ride
+                    </button>
+                </div>
+            </nav>
+
+            <!-- Modal -->
+            <div id="log-trip-modal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Log a Ride</h4>
+                        </div>
+
+                        <div class="modal-body">
+                            <form class="form-horizontal" role="form" id="log-trip-form">
+
+                                <div class="form-group">
+                                    <label for="route-select">Select Route</label>
+                                    <select class="form-control" id="route-select">
+                                        <option value=""> - SELECT ROUTE -</option>
+                                        <option value="id-1">Home to Work</option>
+                                        <option value="id-2">Work to Home</option>
+                                        <option value="id-3">Work to Gym</option>
+                                        <option value="id-4">Gym to Home</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="bus-trip-date">Select Date</label>
+                                    <input class="form-control" id="bus-trip-date" placeholder="Select Date">
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-10 text-center">
+                                        <button type="submit" class="btn btn-default" id="log-trip-btn">Save
+                                        Ride</button>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                        </div>
+
+                        <div class="modal-footer">
+                            %{--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--}%
+                            %{--<div class="form-group">--}%
+                            %{--<div class="col-sm-10 text-center">--}%
+                            %{--<button type="button" class="btn btn-default" id="log-ride-btn">Save--}%
+                            %{--Ride</button>--}%
+                            %{--</div>--}%
+                            %{--</div>--}%
+                        </div>
                     </div>
 
                 </div>
-            </nav>
+            </div>
+            <!-- End Modal -->
+
 
             <div class="content">
                 <div class="container-fluid">
@@ -160,10 +225,6 @@
                                 </div>
                             </div>
                         </div>
-
-
-
-
 
                     </div>
                     <div class="row">
@@ -493,6 +554,11 @@
         </div>
     </div>
 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        DASHBOARD.init();
+    </script>
 
 
 
