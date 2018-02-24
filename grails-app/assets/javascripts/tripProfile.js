@@ -1,6 +1,8 @@
 // var BUS = {
 //     runtime:{
-//         startingAddress: ''
+//         startingAddress: '',
+//         endingAddress: '',
+//
 //
 //     },
 //     init: function () {
@@ -19,6 +21,7 @@ $(document).ready(function () {
     var endingAddress;
     var origin1;
     var destination1;
+    var routeName;
 
 
     $("#test-btn").on("click", function() {
@@ -73,6 +76,8 @@ $(document).ready(function () {
 
     function calculateDistance() {
         //https://developers.google.com/maps/documentation/distance-matrix/intro
+         routeName = $("#route-name-input").val();
+
         if(origin1 && destination1){
             console.log("can calculate distance");
             var geocoder = new google.maps.Geocoder;
@@ -87,9 +92,8 @@ $(document).ready(function () {
                     console.log("error" + status);
                 }else {
                     console.log(response);
-                    var tripName = "Test Trip";
                     var distanceInMiles = response.rows[0].elements[0].distance.text;
-                    saveTripInformation(tripName,origin1,destination1,distanceInMiles, function (response) {
+                    saveTripInformation(routeName, origin1, destination1, distanceInMiles, function (response) {
                         console.log("save trip information");
                         console.log(response);
                         if(response && response.result){
