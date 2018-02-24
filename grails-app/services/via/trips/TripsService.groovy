@@ -19,7 +19,7 @@ class TripsService {
             route.origin = params.startingAddress
             route.destination = params.endingAddress
             route.distanceInMiles = params.distanceInMiles
-            route.placeId = params.tripName
+            route.routeName = params.tripName
             route.userProfile = userProfile
 
             Route persistedRoute =  route.save(flush: true, failOnError: true)

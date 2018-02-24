@@ -4,7 +4,7 @@ class Route {
     String origin
     String destination
     String distanceInMiles
-    String placeId
+    String routeName
 
     static belongsTo = [userProfile: UserProfile]
     static hasMany = [trip: Trip]
@@ -15,6 +15,6 @@ class Route {
         origin nullable: false
         destination nullable: false
         distanceInMiles nullable: false
-        placeId nullable: false
+        routeName nullable: false
     }
 }
