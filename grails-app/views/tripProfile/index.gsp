@@ -37,7 +37,10 @@
 
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyx0uEogAaWBQzcFkUAnz0vAC0I12pZNc&libraries=places" ></script>
-    <asset:javascript src="tripProfile.js"></asset:javascript>
+    %{--<asset:javascript src="tripProfile.js"></asset:javascript>--}%
+    <asset:script>
+        BUS.init();
+    </asset:script>
 
 </body>
 </html>
