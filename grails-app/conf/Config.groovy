@@ -62,8 +62,8 @@ grails {
     mail {
         host = "smtp.gmail.com"
         port = 465
-        username = "username"
-        password = "password"
+        username = "viabusvi@gmail.com"
+        password = "e!d0%*b3A@ov2eLG4vy"
         props = ["mail.smtp.auth":"true",
                  "mail.smtp.socketFactory.port":"465",
                  "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
