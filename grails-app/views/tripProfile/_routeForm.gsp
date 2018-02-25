@@ -9,6 +9,11 @@
         <div class="form-group" id="ending-address-div">
             <input type="text" class="form-control" placeholder="Ending Address" id="ending-address-input">
         </div>
+
+        <div class="form-group" id="route-name-div">
+            <input type="text" class="form-control" placeholder="Trip Name" id="route-name-input">
+        </div>
+
         <p id="routeSetupError" class="error"></p>
         <button id="test-btn" type="submit">click me</button>
     </div>

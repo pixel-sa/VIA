@@ -24,4 +24,32 @@ class TripProfileController {
         }
 
     }
+
+    def getUserRoutes(){
+        ServiceResponse serviceResponse = tripsService.getUserRoutes()
+        if(serviceResponse.isSuccessful()) {
+            render(contentType: "application/json") {
+                [result: true, data: serviceResponse.result]
+            }
+        }else {
+            render(contentType: "application/json") {
+                [result: false, errors: serviceResponse.errors]
+            }
+        }
+    }
+
+    def logTripToDatabase(){
+        log.info("******** log trip to database in trip controller")
+        println(params)
+        ServiceResponse serviceResponse = tripsService.logTripToDatabase(params)
+        if(serviceResponse.isSuccessful()) {
+            render(contentType: "application/json") {
+                [result: true, data: serviceResponse.result]
+            }
+        }else {
+            render(contentType: "application/json") {
+                [result: false, errors: serviceResponse.errors]
+            }
+        }
+    }
 }

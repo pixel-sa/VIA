@@ -14,12 +14,6 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css">
     </head>
     <body id="dashboard">
-        %{--<div class="container">--}%
-            %{--<div class="col-sm-12 text-center">--}%
-            %{--<p>Hello World -- DASHBOARD</p>--}%
-            %{--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>--}%
-            %{--</div>--}%
-        %{--</div>--}%
     <div class="wrapper">
         <div class="sidebar" data-color="purple" data-image="../assets/img/sidebar-1.jpg">
             <div class="logo">
@@ -93,67 +87,58 @@
                         </button>
                         <a class="navbar-brand" href="#">Rider Dashboard </a>
                     </div>
-
-                    %{--<div>--}%
-                        %{--<p>--}%
-                        %{--<button class="btn btn-white btn-round btn-just-icon">--}%
-                            %{--<i class="material-icons">directions_bus</i>--}%
-                            %{--<div class="ripple-container"></div>--}%
-                        %{--</button>--}%
-                        %{--Log Ride</p>--}%
-                    %{--</div>--}%
-
-                    %{--<button type="button" class="btn" id="log-trip-btn">Log a Trip</button>--}%
-
-                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" id="log-trip-btn"
                             data-target="#log-trip-modal">Log Ride
                     </button>
+                    %{--<button type="button" class="btn btn-info btn-lg" id="log-trip-btn">Log Ride</button>--}%
                 </div>
             </nav>
 
-            <!-- Modal -->
-            <div id="log-trip-modal" class="modal fade" role="dialog">
-                <div class="modal-dialog">
+            <div id="modal-div"></div>
 
-                    <!-- Modal content-->
-                    <div class="modal-content">
+            %{--<!-- Modal -->--}%
+            %{--<div id="log-trip-modal" class="modal fade" role="dialog">--}%
+                %{--<div class="modal-dialog">--}%
 
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Log a Ride</h4>
-                        </div>
+                    %{--<!-- Modal content-->--}%
+                    %{--<div class="modal-content">--}%
 
-                        <div class="modal-body">
-                            <form class="form-horizontal" role="form" id="log-trip-form">
+                        %{--<div class="modal-header">--}%
+                            %{--<button type="button" class="close" data-dismiss="modal">&times;</button>--}%
+                            %{--<h4 class="modal-title">Log a Ride</h4>--}%
+                        %{--</div>--}%
 
-                                <div class="form-group">
-                                    <label for="route-select">Select Route</label>
-                                    <select class="form-control" id="route-select">
-                                        <option value=""> - SELECT ROUTE -</option>
-                                        <option value="id-1">Home to Work</option>
-                                        <option value="id-2">Work to Home</option>
-                                        <option value="id-3">Work to Gym</option>
-                                        <option value="id-4">Gym to Home</option>
-                                    </select>
-                                </div>
+                        %{--<div class="modal-body">--}%
+                            %{--<form class="form-horizontal" role="form" id="log-trip-form">--}%
 
-                                <div class="form-group">
-                                    <label for="bus-trip-date">Select Date</label>
-                                    <input class="form-control" id="bus-trip-date" placeholder="Select Date">
-                                </div>
+                                %{--<div class="form-group">--}%
+                                    %{--<label for="route-select">Select Route</label>--}%
+                                    %{--<select class="form-control" id="route-select">--}%
+                                        %{--<option value=""> - SELECT ROUTE -</option>--}%
+                                        %{--<option value="id-1">Home to Work</option>--}%
+                                        %{--<option value="id-2">Work to Home</option>--}%
+                                        %{--<option value="id-3">Work to Gym</option>--}%
+                                        %{--<option value="id-4">Gym to Home</option>--}%
+                                    %{--</select>--}%
+                                %{--</div>--}%
 
-                                <div class="form-group">
-                                    <div class="col-sm-10 text-center">
-                                        <button type="submit" class="btn btn-default" id="log-trip-btn">Save
-                                        Ride</button>
-                                    </div>
-                                </div>
+                                %{--<div class="form-group">--}%
+                                    %{--<label for="bus-trip-date">Select Date</label>--}%
+                                    %{--<input class="form-control" id="bus-trip-date" placeholder="Select Date">--}%
+                                %{--</div>--}%
 
-                            </form>
+                                %{--<div class="form-group">--}%
+                                    %{--<div class="col-sm-10 text-center">--}%
+                                        %{--<button type="submit" class="btn btn-default" id="log-trip-btn">Save--}%
+                                        %{--Ride</button>--}%
+                                    %{--</div>--}%
+                                %{--</div>--}%
 
-                        </div>
+                            %{--</form>--}%
 
-                        <div class="modal-footer">
+                        %{--</div>--}%
+
+                        %{--<div class="modal-footer">--}%
                             %{--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--}%
                             %{--<div class="form-group">--}%
                             %{--<div class="col-sm-10 text-center">--}%
@@ -161,18 +146,18 @@
                             %{--Ride</button>--}%
                             %{--</div>--}%
                             %{--</div>--}%
-                        </div>
-                    </div>
+                        %{--</div>--}%
+                    %{--</div>--}%
 
-                </div>
-            </div>
+                %{--</div>--}%
+            %{--</div>--}%
             <!-- End Modal -->
 
 
             <div class="content">
                 <div class="container-fluid">
-                    <div class="row">
 
+                    <div class="row">
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
                                 <div class="card-content" style="padding-bottom: 35px;">
@@ -557,7 +542,11 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
     <script>
-        DASHBOARD.init();
+        var getUserRoutesLink = "<%= createLink(controller: "tripProfile", action: "getUserRoutes") %>";
+        var logTripToDatabaseLink = "<%= createLink(controller: "tripProfile", action: "logTripToDatabase") %>";
+
+        DASHBOARD.init(getUserRoutesLink, logTripToDatabaseLink);
+
     </script>
 
 

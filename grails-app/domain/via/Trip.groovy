@@ -9,7 +9,7 @@ class Trip {
 
     static constraints = {
         dateOfTrip nullable: false
-        drivingCost nullable:false
-        carbonEmitted nullable: false
+        drivingCost nullable: true
+        carbonEmitted nullable: true
     }
 }
