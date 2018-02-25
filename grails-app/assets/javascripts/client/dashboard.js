@@ -8,7 +8,6 @@ var DASHBOARD = {
     },
 
     init: function (getUserRoutesLink, logTripToDatabaseLink) {
-        console.log("bus javascript init");
 
         DASHBOARD.runtime.getUserRoutesLink = getUserRoutesLink;
         DASHBOARD.runtime.logTripToDatabaseLink = logTripToDatabaseLink;

@@ -2,6 +2,7 @@ package via
 
 import grails.plugin.springsecurity.annotation.Secured
 
+
 @Secured(['ROLE_ADMIN', 'ROLE_USER', 'IS_AUTHENTICATED_FULLY'])
 class DashboardController {
     def userService
@@ -19,6 +20,14 @@ class DashboardController {
     }
 
     def setupProfile() {}
+
+    def leaderboard() {
+        ServiceResponse serviceResponse = userService.getLeaderboard()
+        if (serviceResponse.isSuccessful()){
+            render(view: "leaderboard", model: ["leaderboard": serviceResponse.result])
+        }
+
+    }
 
     def submitUserProfile() {
         ServiceResponse serviceResponse = userService.saveUserProfile(params)
