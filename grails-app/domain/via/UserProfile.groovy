@@ -9,7 +9,8 @@ class UserProfile {
     String phone
 
     static belongsTo = [user: User]
-    static hasMany = [routes: Route, trips: Trip, userVehicles: UserVehicle, statistics: Statistic]
+    static hasMany = [routes: Route, trips: Trip, userVehicles: UserVehicle]
+    static hasOne = [statistic: Statistic]
 
     static constraints = {
         email nullable: false, unique: true

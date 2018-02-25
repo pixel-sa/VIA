@@ -10,9 +10,9 @@ class Statistic {
 
     static constraints = {
 
-        totalBusRides nullable: false
+        totalBusRides nullable: true
         totalMoneySaved nullable: true
         totalCarbonReduced nullable: true
-        totalMinutesNotDriving nullable:false
+        totalMinutesNotDriving nullable: true
     }
 }

@@ -4,6 +4,7 @@ import com.via.auth.User
 import grails.transaction.Transactional
 import via.Route
 import via.ServiceResponse
+import via.Statistic
 import via.Trip
 import via.UserProfile
 
@@ -88,19 +89,51 @@ class TripsService {
 
             Trip persistedTrip =  trip.save(flush: true, failOnError: true)
             if(persistedTrip){
-                serviceResponse.success = true
-                serviceResponse.result = persistedTrip
+
+                def statistic = Statistic.findByUserProfile(userProfile)
+                println(statistic)
+
+                if(!statistic){
+                    //createe one
+                    Statistic newStatistic = new Statistic()
+                    newStatistic.totalBusRides = 1
+                    newStatistic.userProfile = userProfile
+
+                    Statistic persistedStatistic = newStatistic.save(flush: true, failOnError: true)
+
+                    if(persistedStatistic){
+                        serviceResponse.success = true
+                        serviceResponse.result = [persistedTrip, persistedStatistic]
+
+                    } else {
+                        serviceResponse.success = false
+                        serviceResponse.fail("Failed to add new statistic")
+                    }
+
+                } else {
+                    //add to statistic
+                    statistic.totalBusRides = statistic.totalBusRides + 1
+                    statistic.save(flush: true, failOnError: true)
+
+                    serviceResponse.success = true
+                    serviceResponse.result = [persistedTrip, statistic]
+                }
+
             }else{
                 log.info(params)
                 log.info(trip)
                 serviceResponse.success = false
-                serviceResponse.fail("Failed to save route")
+                serviceResponse.fail("Failed to log trip")
             }
 
         }catch(Exception e){
             log.error("Error logging trip: " + e)
-            serviceResponse.fail("Error loggint trip.")
+            serviceResponse.fail("Error logging trip.")
         }
+
+
+
+
         return serviceResponse
 
     }
