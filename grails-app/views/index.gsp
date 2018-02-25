@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta name="layout" content="main"/>
-		<title>VIA CODEATHON</title>
+		<title>Busvi | Welcome</title>
 	</head>
 
 	<body>
