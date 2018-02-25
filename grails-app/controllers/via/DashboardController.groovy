@@ -6,8 +6,17 @@ import grails.plugin.springsecurity.annotation.Secured
 class DashboardController {
     def userService
     def userVehicleService
+    def tripsService
 
-    def index() { }
+    def index() {
+        UserProfile userProfile = userService.getLoggedInUserProfile()
+        ServiceResponse serviceResponse = tripsService.getStatistics(userProfile)
+        if (serviceResponse.isSuccessful()){
+            render(view: "index", model: ['hasStats': true,'statistics': serviceResponse.result])
+        }else{
+            render(view: 'index', model: ['hasStats': false])
+        }
+    }
 
     def setupProfile() {}
 

@@ -10,7 +10,6 @@ class UserProfile {
 
     static belongsTo = [user: User]
     static hasMany = [routes: Route, trips: Trip, userVehicles: UserVehicle]
-    static hasOne = [statistic: Statistic]
 
     static constraints = {
         email nullable: false, unique: true

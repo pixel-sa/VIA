@@ -18,11 +18,9 @@ var DASHBOARD = {
 
     logTripFormSubmitted: function () {
         $("#log-trip-form").submit(function (e) {
-            console.log("form submitted");
             e.preventDefault();
 
             var busTripDate = $("#bus-trip-date").val();
-            console.log(busTripDate);
 
             //TODO NEED TO ADD SOME VALIDATION HERE.... color being overwritten
             // if(!busTripDate){
@@ -35,6 +33,7 @@ var DASHBOARD = {
 
             DASHBOARD.ajax.logTripToDatabase(function (response) {
                 console.log(response);
+                DASHBOARD.html.updateStatistics(response.data[1]);
             });
 
             $('#log-trip-modal').modal('toggle');
@@ -45,13 +44,11 @@ var DASHBOARD = {
 
     logTripButtonClicked: function () {
         $("#log-trip-btn").on("click", function () {
-            console.log("log a trip button clicked");
             //modal html rendered
             DASHBOARD.html.showLogTripModal();
             DASHBOARD.formInputEvents();
             //getting user routes
             DASHBOARD.ajax.getUserRoutes(function (response) {
-               console.log(response);
                if(response && response.result){
                    DASHBOARD.renderRoutesInSelect(response.data);
                    DASHBOARD.logTripFormSubmitted();
@@ -65,7 +62,6 @@ var DASHBOARD = {
 
     formInputEvents: function () {
         $('#route-select').on('change',function() {
-            console.log($(this).val());
             DASHBOARD.runtime.routeSelectedId = $(this).val();
         });
 
@@ -121,6 +117,12 @@ var DASHBOARD = {
             html += '</div>';
 
             $("#modal-div").html(html);
+        },
+        updateStatistics: function(statistics) {
+            $("#totalRides").text(statistics.totalBusRides);
+            $("#moneySaved").text(statistics.totalMoneySaved);
+            $("#carbonSaved").text(statistics.totalCarbonReduced);
+            $("#minSaved").text(statistics.totalMinutesNotDriving);
         }
     },
     ajax: {
@@ -136,12 +138,9 @@ var DASHBOARD = {
         },
         logTripToDatabase: function (callback) {
             var params = "?routeId=" + DASHBOARD.runtime.routeSelectedId + "&tripDate=" + DASHBOARD.runtime.busTripDate;
-            console.log(params);
-
             $.ajax({
                 url: DASHBOARD.runtime.logTripToDatabaseLink + params,
                 success: function (response) {
-                    console.log(response);
                     callback(response)
                 }
             })

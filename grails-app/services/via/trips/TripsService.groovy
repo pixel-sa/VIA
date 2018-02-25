@@ -7,12 +7,14 @@ import via.ServiceResponse
 import via.Statistic
 import via.Trip
 import via.UserProfile
+import via.UserVehicle
 
 import javax.xml.ws.Service
 
 @Transactional
 class TripsService {
     def userService
+    def gasPricesService
 
     def saveTripInformation(params){
         ServiceResponse serviceResponse = new ServiceResponse()
@@ -77,15 +79,36 @@ class TripsService {
         try{
             UserProfile userProfile = userService.getLoggedInUserProfile()
             Route route = Route.findById(params.routeId)
-            log.info(userProfile)
-            log.info(route)
 
             Date date = new Date(params.tripDate)
+
+            def gasPrice = gasPricesService.getLocalGasPrice(route.origin)
+            gasPrice = gasPrice.substring(1) as Double
+            log.info(gasPrice)
+            def distance = route.distanceInMiles.split()
+            distance = distance[0] as Double
+            log.info(distance)
+
+            UserVehicle userVehicle = UserVehicle.findByUserProfile(userProfile)
+            def drivingCost = ((distance * 2) / userVehicle.mpg) * gasPrice
+            log.info(drivingCost)
+
+            def carbonRate
+            if (userVehicle.fuelType == "Diesel") {
+                carbonRate = 22.4
+            }else{
+                carbonRate = 19.6
+            }
+            def carbonEmitted = distance * 2 * carbonRate
+            log.info(carbonEmitted)
+
 
             Trip trip = new Trip()
             trip.dateOfTrip = date
             trip.userProfile = userProfile
             trip.route = route
+            trip.carbonEmitted = carbonEmitted.round(2)
+            trip.drivingCost = drivingCost.round(2)
 
             Trip persistedTrip =  trip.save(flush: true, failOnError: true)
             if(persistedTrip){
@@ -94,10 +117,14 @@ class TripsService {
                 println(statistic)
 
                 if(!statistic){
-                    //createe one
+                    //create one
                     Statistic newStatistic = new Statistic()
                     newStatistic.totalBusRides = 1
                     newStatistic.userProfile = userProfile
+                    newStatistic.totalMoneySaved = drivingCost.round(2) as Double
+                    newStatistic.totalCarbonReduced = carbonEmitted.round(0)
+                    def timeNotDriving = route.durationInMinutes.split()
+                    newStatistic.totalMinutesNotDriving = timeNotDriving[0] as Integer
 
                     Statistic persistedStatistic = newStatistic.save(flush: true, failOnError: true)
 
@@ -113,6 +140,10 @@ class TripsService {
                 } else {
                     //add to statistic
                     statistic.totalBusRides = statistic.totalBusRides + 1
+                    statistic.totalMoneySaved = statistic.totalMoneySaved + drivingCost.round(2) as Double
+                    statistic.totalCarbonReduced = statistic.totalCarbonReduced + carbonEmitted.round(0)
+                    def timeNotDriving = route.durationInMinutes.split()
+                    statistic.totalMinutesNotDriving = (statistic.totalMinutesNotDriving as Integer) + (timeNotDriving[0] as Integer)
                     statistic.save(flush: true, failOnError: true)
 
                     serviceResponse.success = true
@@ -131,9 +162,23 @@ class TripsService {
             serviceResponse.fail("Error logging trip.")
         }
 
+        return serviceResponse
 
+    }
 
-
+    def getStatistics(userProfile){
+        ServiceResponse serviceResponse = new ServiceResponse()
+        try{
+            Statistic statistic = Statistic.findByUserProfile(userProfile)
+            if(statistic) {
+                serviceResponse.success(statistic)
+            }else{
+                serviceResponse.fail("no stats")
+            }
+        }catch (Exception e){
+            log.error(e)
+            serviceResponse.fail(e)
+        }
         return serviceResponse
 
     }

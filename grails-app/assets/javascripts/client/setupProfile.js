@@ -41,6 +41,7 @@ $(document).ready(function () {
                     $("#setupUserProfileForm").hide();
                     $("#vehicleFormContainer").show();
                 }else {
+                    console.log(response);
                     $("#setupUserError").text("Error saving profile");
                 }
             }

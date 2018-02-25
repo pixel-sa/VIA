@@ -2,7 +2,7 @@ package via
 
 class Statistic {
     Integer totalBusRides
-    String totalMoneySaved
+    Double totalMoneySaved
     Integer totalCarbonReduced
     Integer totalMinutesNotDriving
 

@@ -157,6 +157,8 @@
             <div class="content">
                 <div class="container-fluid">
 
+                <g:if test="${hasStats}">
+
                     <div class="row">
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
@@ -165,7 +167,7 @@
                                         <i class="material-icons circle-icon" style="background: #0984e3">airport_shuttle</i>
                                     </div>
                                     <p class="category">Number of Rides</p>
-                                    <h1 class="title">43</h1>
+                                    <h1 class="title"id="totalRides">${statistics.totalBusRides}</h1>
                                     <small></small>
                                 </div>
                             </div>
@@ -179,7 +181,7 @@
                                            style="background: #ffeaa7"></i>
                                     </div>
                                     <p class="category">Money Saved</p>
-                                    <h1 class="title">$46.75</h1>
+                                    <h1 class="title" id="moneySaved">$${statistics.totalMoneySaved}</h1>
                                 </div>
                             </div>
                         </div>
@@ -191,8 +193,8 @@
                                         <i class="glyphicon glyphicon-leaf circle-icon" style="background: #00b894"></i>
                                     </div>
                                     <p class="category">Carbon Reduced</p>
-                                    <h1 class="title">36</h1>
-                                    <small>metric tons of CO2</small>
+                                    <h1 class="title" id="carbonSaved">${statistics.totalCarbonReduced}</h1>
+                                    <small>lbs of CO2</small>
                                 </div>
                             </div>
                         </div>
@@ -205,13 +207,14 @@
 
                                     </div>
                                     <p class="category">Time Not Driving</p>
-                                    <h1 class="title">900</h1>
+                                    <h1 class="title" id="minSaved">${statistics.totalMinutesNotDriving}</h1>
                                     <small>minutes</small>
                                 </div>
                             </div>
                         </div>
 
                     </div>
+                </g:if>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="card">

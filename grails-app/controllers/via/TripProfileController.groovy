@@ -39,7 +39,6 @@ class TripProfileController {
     }
 
     def logTripToDatabase(){
-        log.info("******** log trip to database in trip controller")
         println(params)
         ServiceResponse serviceResponse = tripsService.logTripToDatabase(params)
         if(serviceResponse.isSuccessful()) {
