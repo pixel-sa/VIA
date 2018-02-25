@@ -16,6 +16,7 @@
 //     }
 // };
 
+//TODO  Remove console logs
 $(document).ready(function () {
     var startingAddress;
     var endingAddress;
@@ -93,7 +94,9 @@ $(document).ready(function () {
                 }else {
                     console.log(response);
                     var distanceInMiles = response.rows[0].elements[0].distance.text;
-                    saveTripInformation(routeName, origin1, destination1, distanceInMiles, function (response) {
+                    var durationInMinutes = response.rows[0].elements[0].duration.text;
+                    console.log(durationInMinutes);
+                    saveTripInformation(routeName, origin1, destination1, distanceInMiles, durationInMinutes, function (response) {
                         console.log("save trip information");
                         console.log(response);
                         if(response && response.result){
@@ -116,9 +119,9 @@ $(document).ready(function () {
 
     /// AJAX CALLS ///
 
-    function saveTripInformation(tripName, startingAddress, endingAddress, distanceInMiles, callback){
+    function saveTripInformation(tripName, startingAddress, endingAddress, distanceInMiles, durationInMinutes, callback){
         var params = "?tripName=" + tripName + "&startingAddress=" + startingAddress + "&endingAddress=" + endingAddress +
-            "&distanceInMiles=" + distanceInMiles;
+            "&distanceInMiles=" + distanceInMiles + "&durationInMinutes=" + durationInMinutes;
 
         $.ajax({
             url:"/tripProfile/saveTripInformation" + params,
