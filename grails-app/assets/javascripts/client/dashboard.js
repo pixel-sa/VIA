@@ -12,6 +12,16 @@ var DASHBOARD = {
         DASHBOARD.runtime.getUserRoutesLink = getUserRoutesLink;
         DASHBOARD.runtime.logTripToDatabaseLink = logTripToDatabaseLink;
 
+        // DASHBOARD.ajax.getUserRoutes(function (response) {
+        //     console.log(response);
+        //     if (response && response.result) {
+        //         DASHBOARD.renderRoutesInTable(response.data);
+        //     } else {
+        //         //TODO HANDLE error if routes were not successfully received.
+        //     }
+        // })
+
+
         DASHBOARD.logTripButtonClicked();
         DASHBOARD.addNewRouteEvent();
     },
@@ -83,6 +93,23 @@ var DASHBOARD = {
                 .append($("<option></option>")
                     .attr("value" , value.id)
                     .text(value.routeName));
+        });
+    },
+
+    renderRoutesInTable:function (routes) {
+        for(var i = 1; i < routes.length; i ++){
+            var html = "";
+            html += '<tr><td>'+i+'</td></tr>';
+            html += '<tr><td>'+ routes.+'</td></tr>';
+            html += '<tr><td>'+ value.routeName+'</td></tr>';
+
+
+        }
+
+
+        $.each(routes, function (i, value){
+            $("#route-table-body")
+                .html('<tr><td>'+i+'</td></tr>' +'<tr><td>'+value.routeName+'</td></tr>' )
         });
     },
 
