@@ -1,7 +1,7 @@
 <div class="calculatorContainer">
-    <h1 class="text-center">Calculate your savings!</h1>
+    <h3 class="text-center">Calculate Potential Savings</h3>
 
-    <div class="col-md-8 col-md-offset-2 col-xs-12">
+    <div>
         <div id="calculatorVehicle" class="form-inline text-center" >
             <div class="form-group">
                 <label for="yearCalc">Year:</label>
@@ -62,7 +62,7 @@
 
         <div id="routeCalcForm">
             <div class="form-group" id="starting-address-div-calc">
-                <input type="text" class="form-control" placeholder="Where does your commute start from?" id="starting-address-input-calc" />
+                <input type="text" class="form-control" placeholder="Where does your commute start?" id="starting-address-input-calc" />
             </div>
 
             <div class="form-group" id="ending-address-div-calc">
@@ -74,7 +74,8 @@
             <input type="number" class="form-control" placeholder="How many days a week do you make this commute?" id="daysCalc" />
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Other cost associated with commute. I.e parking, etc." id="otherCalc" />
+            <input type="text" class="form-control" placeholder="Other cost associated with commute - like parking."
+                   id="otherCalc" />
         </div>
         <div class="form-group text-center">
             <p id="routeSetupErrorCalc" class="error"></p>

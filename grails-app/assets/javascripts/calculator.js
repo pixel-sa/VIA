@@ -364,8 +364,10 @@ $(document).ready(function () {
         console.log(totalCost);
         if (totalCost > 0){
             $("#loadContainer").hide();
-            var html = "<h1 class='text-center'>Your monthly cost to commute is $" + totalCost.toFixed(2) + " per month</h1>";
-            html += "<h1 class='text-center'>Your will reduce your carbon footprint by " + carbonEmmitted.toFixed(2) + " lbs of CO2 per month*</h1>";
+            var html = "<h3 class='text-center'>Your monthly cost to commute is $" + totalCost.toFixed(2) + " per" +
+                " month</h3>";
+            html += "<br>";
+            html += "<h3 class='text-center'>Your will reduce your carbon footprint by " + carbonEmmitted.toFixed(2) + " lbs of CO2 per month*</h3>";
             $("#calculatorResults").html(html);
         }
         });
