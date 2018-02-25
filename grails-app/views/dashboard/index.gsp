@@ -8,154 +8,30 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
     <head>
-        <meta name="layout" content="tim"/>
+        <meta name="layout" content="main"/>
         <title>Dashboard</title>
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css">
     </head>
     <body id="dashboard">
-    <div class="wrapper">
-        <div class="sidebar" data-color="purple" data-image="../assets/img/sidebar-1.jpg">
-            <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text">
-                    Creative Tim
-                </a>
-            </div>
-            <div class="sidebar-wrapper">
-                <ul class="nav">
-                    <li class="active">
-                        <a href="dashboard.html">
-                            <i class="material-icons">dashboard</i>
-                            <p>Dashboard</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./user.html">
-                            <i class="material-icons">person</i>
-                            <p>User Profile</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./table.html">
-                            <i class="material-icons">content_paste</i>
-                            <p>Table List</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./typography.html">
-                            <i class="material-icons">library_books</i>
-                            <p>Typography</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./icons.html">
-                            <i class="material-icons">bubble_chart</i>
-                            <p>Icons</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./maps.html">
-                            <i class="material-icons">location_on</i>
-                            <p>Maps</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./notifications.html">
-                            <i class="material-icons text-gray">notifications</i>
-                            <p>Notifications</p>
-                        </a>
-                    </li>
-                    <li class="active-pro">
-                        <a href="upgrade.html">
-                            <i class="material-icons">unarchive</i>
-                            <p>Upgrade to PRO</p>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="main-panel">
-            <nav class="navbar navbar-transparent navbar-absolute">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="#">Rider Dashboard </a>
-                    </div>
-                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" id="log-trip-btn"
-                            data-target="#log-trip-modal">Log Ride
-                    </button>
-                    %{--<button type="button" class="btn btn-info btn-lg" id="log-trip-btn">Log Ride</button>--}%
-                </div>
-            </nav>
-
-            <div id="modal-div"></div>
-
-            %{--<!-- Modal -->--}%
-            %{--<div id="log-trip-modal" class="modal fade" role="dialog">--}%
-                %{--<div class="modal-dialog">--}%
-
-                    %{--<!-- Modal content-->--}%
-                    %{--<div class="modal-content">--}%
-
-                        %{--<div class="modal-header">--}%
-                            %{--<button type="button" class="close" data-dismiss="modal">&times;</button>--}%
-                            %{--<h4 class="modal-title">Log a Ride</h4>--}%
-                        %{--</div>--}%
-
-                        %{--<div class="modal-body">--}%
-                            %{--<form class="form-horizontal" role="form" id="log-trip-form">--}%
-
-                                %{--<div class="form-group">--}%
-                                    %{--<label for="route-select">Select Route</label>--}%
-                                    %{--<select class="form-control" id="route-select">--}%
-                                        %{--<option value=""> - SELECT ROUTE -</option>--}%
-                                        %{--<option value="id-1">Home to Work</option>--}%
-                                        %{--<option value="id-2">Work to Home</option>--}%
-                                        %{--<option value="id-3">Work to Gym</option>--}%
-                                        %{--<option value="id-4">Gym to Home</option>--}%
-                                    %{--</select>--}%
-                                %{--</div>--}%
-
-                                %{--<div class="form-group">--}%
-                                    %{--<label for="bus-trip-date">Select Date</label>--}%
-                                    %{--<input class="form-control" id="bus-trip-date" placeholder="Select Date">--}%
-                                %{--</div>--}%
-
-                                %{--<div class="form-group">--}%
-                                    %{--<div class="col-sm-10 text-center">--}%
-                                        %{--<button type="submit" class="btn btn-default" id="log-trip-btn">Save--}%
-                                        %{--Ride</button>--}%
-                                    %{--</div>--}%
-                                %{--</div>--}%
-
-                            %{--</form>--}%
-
-                        %{--</div>--}%
-
-                        %{--<div class="modal-footer">--}%
-                            %{--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--}%
-                            %{--<div class="form-group">--}%
-                            %{--<div class="col-sm-10 text-center">--}%
-                            %{--<button type="button" class="btn btn-default" id="log-ride-btn">Save--}%
-                            %{--Ride</button>--}%
-                            %{--</div>--}%
-                            %{--</div>--}%
-                        %{--</div>--}%
-                    %{--</div>--}%
-
-                %{--</div>--}%
-            %{--</div>--}%
-            <!-- End Modal -->
-
-
+        <div class="container">
             <div class="content">
                 <div class="container-fluid">
+
+                    <div id="modal-div"></div>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h1>Rider Dashboard </h1>
+                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" id="log-trip-btn"
+                                    data-target="#log-trip-modal">Log Ride
+                            </button>
+                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" id="add-new-route-btn"
+                                    data-target="#add-new-route-modal">Add New Route
+                            </button>
+                        </div>
+                    </div>
+
 
                     <div class="row">
                         <div class="col-lg-3 col-md-6 col-sm-6">
@@ -165,7 +41,7 @@
                                         <i class="material-icons circle-icon" style="background: #0984e3">airport_shuttle</i>
                                     </div>
                                     <p class="category">Number of Rides</p>
-                                    <h1 class="title">43</h1>
+                                    <h2 class="title">43</h2>
                                     <small></small>
                                 </div>
                             </div>
@@ -179,7 +55,7 @@
                                            style="background: #ffeaa7"></i>
                                     </div>
                                     <p class="category">Money Saved</p>
-                                    <h1 class="title">$46.75</h1>
+                                    <h2 class="title">$46.75</h2>
                                 </div>
                             </div>
                         </div>
@@ -191,7 +67,7 @@
                                         <i class="glyphicon glyphicon-leaf circle-icon" style="background: #00b894"></i>
                                     </div>
                                     <p class="category">Carbon Reduced</p>
-                                    <h1 class="title">36</h1>
+                                    <h2 class="title">36</h2>
                                     <small>metric tons of CO2</small>
                                 </div>
                             </div>
@@ -205,7 +81,7 @@
 
                                     </div>
                                     <p class="category">Time Not Driving</p>
-                                    <h1 class="title">900</h1>
+                                    <h2 class="title">900</h2>
                                     <small>minutes</small>
                                 </div>
                             </div>
