@@ -14,11 +14,6 @@ var DASHBOARD = {
         DASHBOARD.runtime.logTripToDatabaseLink = logTripToDatabaseLink;
 
         DASHBOARD.logTripButtonClicked();
-
-        // DASHBOARD.logTripFormSubmitted();
-
-
-
     },
 
     logTripFormSubmitted: function () {
