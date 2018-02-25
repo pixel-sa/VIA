@@ -91,7 +91,26 @@
 
 
                 <h1 class="text-center">Leaderboard</h1>
-
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Username</th>
+                        <th>Total $ Saved</th>
+                        <th>Total CO2 Saved</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <g:each in="${leaderboard}" var="statistic" status="counter">
+                        <tr>
+                            <td>${counter + 1}</td>
+                            <td>${statistic.userProfile.user.username}</td>
+                            <td>$${statistic.totalMoneySaved}</td>
+                            <td>${statistic.totalCarbonReduced} lbs</td>
+                        </tr>
+                    </g:each>
+                    </tbody>
+                </table>
 
             </div>
         </div>

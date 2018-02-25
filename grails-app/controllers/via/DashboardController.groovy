@@ -21,7 +21,13 @@ class DashboardController {
 
     def setupProfile() {}
 
-    def leaderboard() {}
+    def leaderboard() {
+        ServiceResponse serviceResponse = userService.getLeaderboard()
+        if (serviceResponse.isSuccessful()){
+            render(view: "leaderboard", model: ["leaderboard": serviceResponse.result])
+        }
+
+    }
 
     def submitUserProfile() {
         ServiceResponse serviceResponse = userService.saveUserProfile(params)

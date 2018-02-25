@@ -3,6 +3,7 @@ package via.User
 import com.via.auth.User
 import grails.transaction.Transactional
 import via.ServiceResponse
+import via.Statistic
 import via.UserProfile
 
 @Transactional
@@ -44,6 +45,22 @@ class UserService {
         }catch (Exception e){
             log.error(e)
         }
+    }
+
+    def getLeaderboard(){
+        ServiceResponse serviceResponse = new ServiceResponse()
+        try{
+            def results = Statistic.findAllByTotalBusRidesGreaterThan(0, [max: 10, sort: "totalMoneySaved", order: "desc"])
+            if(results.size() > 0) {
+                serviceResponse.success(results);
+            }else{
+                serviceResponse.fail("Failed to get leaderboard")
+            }
+        }catch(Exception e) {
+            log.error(e)
+            serviceResponse.fail("Error retrieving leaderboard")
+        }
+        return serviceResponse
     }
 
 }
