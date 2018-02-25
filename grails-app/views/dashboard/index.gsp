@@ -37,7 +37,9 @@
                     </div>
 
 
-                    <div class="row" id="statsRow" <g:if test="${!hasStats}">style="display: none;"</g:if>>
+
+                    <g:if test="${hasStats}">
+                    <div class="row" id="statsRow">
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
                                 <div class="card-content" style="padding-bottom: 35px;">
@@ -143,6 +145,7 @@
                             %{--</div>--}%
                         %{--</div>--}%
                     %{--</div>--}%
+                    </g:if>
                     <div class="row">
                         %{--<div class="col-lg-6 col-md-12">--}%
                             %{--<div class="card card-nav-tabs">--}%
