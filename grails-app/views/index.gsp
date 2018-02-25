@@ -8,7 +8,7 @@
 	<body>
 		<div class="col-xs-12" id="navbar-section">
 			<div class="container">
-				<div class="col-xs-12 col-md-9" id="intro-text">
+				<div class="col-xs-12" id="intro-text">
 					<h1>Step 1. Track your bus activity.</h1>
 					<h1>Step 2. Save money.</h1>
 					<h1>Step 3. Change the world.</h1>
