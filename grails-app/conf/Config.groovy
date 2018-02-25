@@ -99,6 +99,8 @@ grails.hibernate.pass.readonly = false
 grails.hibernate.osiv.readonly = false
 
 grails.plugin.springsecurity.ui.register.postRegisterUrl = '/dashboard/setupProfile'
+grails.plugin.springsecurity.successHandler.alwaysUseDefault = true
+grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/dashboard/index'
 
 grails.mail.default.from = "no-reply@busvi.com"
 
