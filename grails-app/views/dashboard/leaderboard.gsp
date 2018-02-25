@@ -19,8 +19,8 @@
                     <tr>
                         <th>Rank</th>
                         <th>Username</th>
-                        <th>Total $ Saved</th>
                         <th>Total CO2 Saved</th>
+                        <th>Total $ Saved</th>
                         <th>Time not Driving</th>
                     </tr>
                     </thead>
