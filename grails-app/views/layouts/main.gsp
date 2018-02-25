@@ -26,7 +26,7 @@
 
 
 
-	<asset:stylesheet src="application.css"/>
+		<asset:stylesheet src="application.css"/>
 		<asset:javascript src="application.js"/>
 
 		<g:layoutHead/>
@@ -50,9 +50,9 @@
 
 						<h3 class="brand brand-name navbar-left">Busvi</h3>
 
-						<sec:ifLoggedIn>
-							Welcome, <sec:username />
-						</sec:ifLoggedIn>
+						%{--<sec:ifLoggedIn>--}%
+							%{--Welcome, <sec:username />--}%
+						%{--</sec:ifLoggedIn>--}%
 					</div>
 
 					<!-- Collect the nav links, forms, and other content for toggling -->
@@ -61,9 +61,12 @@
 						<ul class="nav navbar-nav navbar-right">
 							<sec:ifLoggedIn>
 								<li><a href="${createLink(controller: "dashboard", action: "index")}">Dashboard</a></li>
-								<li><a href="${createLink(controller: "dashboard", action: "leaderboard")}">Leader Board</a></li>
-								<li><a href="${createLink(controller: "tripProfile", action: "index")}">Bus Profile</a></li>
-								<li><a href="${createLink(controller: "vehicleProfile", action: "index")}">Vehicle Profile</a></li>
+								<li><a href="${createLink(controller: "dashboard", action: "leaderboard")}">
+									Leaderboard</a></li>
+								<li><a href="">Ride History</a></li>
+
+							%{--<li><a href="${createLink(controller: "tripProfile", action: "index")}">Bus Profile</a></li>--}%
+								%{--<li><a href="${createLink(controller: "vehicleProfile", action: "index")}">Vehicle Profile</a></li>--}%
 								<li><a href="${createLink(controller: "logout")}">Logout</a></li>
 							</sec:ifLoggedIn>
 
