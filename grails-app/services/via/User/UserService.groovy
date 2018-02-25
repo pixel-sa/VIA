@@ -50,7 +50,7 @@ class UserService {
     def getLeaderboard(){
         ServiceResponse serviceResponse = new ServiceResponse()
         try{
-            def results = Statistic.findAllByTotalBusRidesGreaterThan(0, [max: 10, sort: "totalMoneySaved", order: "desc"])
+            def results = Statistic.findAllByTotalBusRidesGreaterThan(0, [max: 10, sort: "totalCarbonReduced", order: "desc"])
             if(results.size() > 0) {
                 serviceResponse.success(results);
             }else{

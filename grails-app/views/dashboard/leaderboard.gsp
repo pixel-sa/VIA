@@ -12,7 +12,8 @@
             <div class="container-fluid">
 
             <div class="col-xs-12 col-md-offset-2 col-md-8">
-                <h1 class="text-center">Leader Board</h1>
+                <h1 style="line-height: .9em";>Leaderboard<br /><small>Greenest Users</small></h1>
+
                 <table class="table table-bordered table-striped table-responsive">
                     <thead>
                     <tr>
@@ -20,6 +21,7 @@
                         <th>Username</th>
                         <th>Total $ Saved</th>
                         <th>Total CO2 Saved</th>
+                        <th>Time not Driving</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -27,8 +29,9 @@
                         <tr>
                             <td>${counter + 1}</td>
                             <td>${statistic.userProfile.user.username}</td>
-                            <td>$${statistic.totalMoneySaved}</td>
                             <td>${statistic.totalCarbonReduced} lbs</td>
+                            <td>$${statistic.totalMoneySaved}</td>
+                            <td>${statistic.totalMinutesNotDriving} mins</td>
                         </tr>
                     </g:each>
                     </tbody>

@@ -162,7 +162,7 @@ var DASHBOARD = {
         updateStatistics: function(statistics) {
             $("#statsRow").show();
             $("#totalRides").text(statistics.totalBusRides);
-            $("#moneySaved").text(statistics.totalMoneySaved);
+            $("#moneySaved").text('$' + statistics.totalMoneySaved);
             $("#carbonSaved").text(statistics.totalCarbonReduced);
             $("#minSaved").text(statistics.totalMinutesNotDriving);
         }

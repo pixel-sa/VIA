@@ -140,7 +140,7 @@ class TripsService {
                 } else {
                     //add to statistic
                     statistic.totalBusRides = statistic.totalBusRides + 1
-                    statistic.totalMoneySaved = statistic.totalMoneySaved + drivingCost.round(2) as Double
+                    statistic.totalMoneySaved = (statistic.totalMoneySaved + (drivingCost as Double)).round(2)
                     statistic.totalCarbonReduced = statistic.totalCarbonReduced + carbonEmitted.round(0)
                     def timeNotDriving = route.durationInMinutes.split()
                     statistic.totalMinutesNotDriving = (statistic.totalMinutesNotDriving as Integer) + (timeNotDriving[0] as Integer)
