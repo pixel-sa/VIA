@@ -84,5 +84,16 @@
 
 	<g:render template="calculator" />
 
+	<div id="loadContainer" style="display: none;">
+		<h1 class="text-center">Please Wait. Calculating your saving!</h1>
+		<g:render template="loader" />
+	</div>
+
+	<div id="calculatorResults"></div>
+
+
+
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyx0uEogAaWBQzcFkUAnz0vAC0I12pZNc&libraries=places" ></script>
+	<asset:javascript src="calculator.js"></asset:javascript>
 	</body>
 </html>

@@ -58,10 +58,6 @@
         <div id="additionalVehicleFormsCalc" class="form-inline text-center">
             %{--if additional vehicle attributes are needed to narrow down selection they will populate here--}%
         </div>
-        <p id="vehicleFormErrorCalc" class="error"></p>
-        <div id="vehicleResultCalc">
-            %{--for now results will be displayed here for testing--}%
-        </div>
 
 
         <div id="routeCalcForm">
@@ -72,7 +68,6 @@
             <div class="form-group" id="ending-address-div-calc">
                 <input type="text" class="form-control" placeholder="Where does your commute end?" id="ending-address-input-calc" />
             </div>
-            <p id="routeSetupErrorCalc" class="error"></p>
         </div>
         
         <div class="form-group">
@@ -82,6 +77,8 @@
             <input type="text" class="form-control" placeholder="Other cost associated with commute. I.e parking, etc." id="otherCalc" />
         </div>
         <div class="form-group text-center">
+            <p id="routeSetupErrorCalc" class="error"></p>
+            <p id="vehicleFormErrorCalc" class="error"></p>
             <button id="submitCalculatorBtn" class="btn btn-behance">Calculate Savings</button>
         </div>
 

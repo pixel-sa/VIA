@@ -2,9 +2,11 @@ $(document).ready(function () {
     "use strict";
     <!--  ********  Global varialbles **********   -->
     var userVehicle;
-    var userDistance;
-
-
+    var startingAddress;
+    var endingAddress;
+    var distance;
+    var zipcode;
+    var gasPrice;
 
 
     <!--  ********  Event Handlers **********   -->
@@ -44,18 +46,10 @@ $(document).ready(function () {
                 if (vehicles.length === 1){
                     // *** WINNER ***
                     userVehicle = vehicles[0];
-                    $("#vehicleResultCalc").html("<h2 class='text-center'>Combined " + vehicles[0].combined + " MPG</h2>");
                 }else{
-
-                    $.each(vehicles, function(i, vehicle){
-                        console.log(vehicle)
-                    });
-
-                    //TODO: check if comined MPG are the same.. if = then no need to pick from engine sizes
                     if (checkIfMPGSame(vehicles)){
                         // ** WINNER **
                         userVehicle = vehicles[0];
-                        $("#vehicleResultCalc").html("<h2 class='text-center'>Combined " + vehicles[0].combined + " MPG</h2>");
                     }else {
                         //TODO: select from displacement and if still not to one then select from transmission
                         populateEnginesCalc(vehicles);
@@ -82,13 +76,11 @@ $(document).ready(function () {
             if(matchingVehicles.length === 1){
                 // ** WINNER **
                 userVehicle = matchingVehicles[0];
-                $("#vehicleResultCalc").html("<h2 class='text-center'>Combined " + matchingVehicles[0].combined + " MPG</h2>");
             }else{
                 console.log(matchingVehicles);
                 if(checkIfMPGSame(matchingVehicles)){
                     //** WINNER **
                     userVehicle = matchingVehicles[0];
-                    $("#vehicleResultCalc").html("<h2 class='text-center'>Combined " + matchingVehicles[0].combined + " MPG</h2>");
 
                 }else {
                     //TODO: check to see what additional field to check to differentiate models.. possible transmission
@@ -106,7 +98,6 @@ $(document).ready(function () {
                 if (vehicle.transmission === transmission) {
                     //**WINNER **
                     userVehicle = vehicle;
-                    $("#vehicleResultCalc").html("<h2 class='text-center'>Combined " + vehicle.combined + " MPG</h2>");
 
                 }
             })
@@ -249,5 +240,138 @@ $(document).ready(function () {
     <!--  ******** END Vehicle Logic **********   -->
 
     <!--  ********  Start Vehicle Logic **********   -->
+
+
+    function saveStartingAddressCalc() {
+        var startingAddressInput = document.getElementById("starting-address-input-calc");
+        var searchBox = new google.maps.places.SearchBox(startingAddressInput);
+        searchBox.addListener('places_changed', function () {
+            var place = searchBox.getPlaces();
+            startingAddress = place[0].formatted_address;
+            zipcode = place[0].address_components[7].short_name;
+        });
+    };
+
+    function saveEndingAddressCalc() {
+        var endingAddressInput = document.getElementById("ending-address-input-calc");
+        var searchBox = new google.maps.places.SearchBox(endingAddressInput);
+        searchBox.addListener('places_changed', function () {
+            var place = searchBox.getPlaces();
+            endingAddress = place[0].formatted_address;
+
+        });
+    }
+
+    function calculateDistanceCalc() {
+
+        //https://developers.google.com/maps/documentation/distance-matrix/intro
+        if(startingAddress && endingAddress){
+            var geocoder = new google.maps.Geocoder;
+            var service = new google.maps.DistanceMatrixService;
+            service.getDistanceMatrix({
+                origins: [startingAddress],
+                destinations: [endingAddress],
+                travelMode: 'DRIVING',
+                unitSystem: google.maps.UnitSystem.IMPERIAL
+            }, function(response, status){
+                if(status !== "OK"){
+                    console.log("error" + status);
+                }else {
+                    console.log(response);
+                    console.log(response.rows[0].elements[0].distance.text);
+                   distance = response.rows[0].elements[0].distance.text;
+
+                }
+            });
+        } else {
+            console.log("cannot calculate");
+        }
+
+    }
+
+    $("#starting-address-input-calc").off().focus(function () {
+        saveStartingAddressCalc();
+    });
+
+    $("#ending-address-input-calc").off().focus(function() {
+        saveEndingAddressCalc();
+    });
+
+
+
+        <!--  ********  END Vehicle Logic **********   -->
+
+    <!--  ********   START Calculation Logic **********   -->
+
+    function getGasPrice(callback){
+        $.ajax({
+            url: "/vehicleProfile/getGasPrices?zipcode=" + zipcode,
+            success: function (response) {
+                if (response && response.result){
+                    console.log(response.data);
+                    gasPrice = response.data;
+                    callback();
+                }
+
+            }
+        })
+    }
+
+    function calculateMonthlyCost(mpg, commuteDistance, currentGasPrice, daysPerWeek, miscCosts, callback){
+        var roundTrip = commuteDistance * 2;
+        var gasNeeded = roundTrip / mpg;
+        var costOfFuel = gasNeeded * currentGasPrice;
+        var timesPerMonth = daysPerWeek * 4.34;
+        var monthlyCostofFuel = costOfFuel * timesPerMonth;
+        var totalCost = monthlyCostofFuel + miscCosts;
+        var carbonEmmited = calculateMontlyCarbonEmmitted(roundTrip * timesPerMonth, userVehicle.fuelType);
+        callback(totalCost, carbonEmmited);
+    }
+
+    function calculateMontlyCarbonEmmitted(milesDriven, fuelType) {
+        var carbonRate;
+        if (fuelType === 'Diesel'){
+            carbonRate = 22.4
+        }else{
+            carbonRate = 19.6
+        }
+        return carbonRate * milesDriven;
+    }
+
+
+    $("#submitCalculatorBtn").on("click", function(){
+        $(".calculatorContainer").hide();
+        $("#loadContainer").show();
+
+        calculateDistanceCalc();
+
+        getGasPrice(function(){
+        var daysOfWeek = $("#daysCalc").val();
+        var otherCosts = $("#otherCalc").val();
+        var distanceInt = distance.split(' ');
+        distanceInt = parseFloat(distanceInt[0]);
+        var gasInt = parseFloat(gasPrice.substr(1));
+        var mpg = userVehicle.combined;
+
+
+        console.log(daysOfWeek);
+        console.log(parseInt(otherCosts));
+        console.log(distanceInt);
+        console.log(gasInt);
+        console.log(mpg);
+        console.log("-----");
+        calculateMonthlyCost(mpg, distanceInt, gasInt, parseInt(daysOfWeek), parseInt(otherCosts), function(totalCost, carbonEmmitted){
+        console.log(totalCost);
+        if (totalCost > 0){
+            $("#loadContainer").hide();
+            var html = "<h1 class='text-center'>Your monthly cost to commute is $" + totalCost.toFixed(2) + " per month</h1>";
+            html += "<h1 class='text-center'>Your will reduce your carbon footprint by " + carbonEmmitted.toFixed(2) + " lbs of CO2 per month*</h1>";
+            $("#calculatorResults").html(html);
+        }
+        });
+
+        });
+    });
+
 
 });
