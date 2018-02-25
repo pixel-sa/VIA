@@ -1,3 +1,6 @@
+#override, #body{
+    background-color: white;
+}
 #logo {
     display: block;
     height: auto;

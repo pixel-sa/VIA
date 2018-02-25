@@ -6,6 +6,49 @@
 		<asset:stylesheet src='spring-security-ui-auth.css'/>
 	</head>
 	<body>
+
+
+
+	<div class="container">
+		<div class="row" id="pwd-container">
+			<div class="col-md-4"></div>
+
+			<div class="col-md-4">
+				<section class="login-form">
+					<h3 class="text-center">Login to Busvi</h3>
+					<form method="post" action="#" role="login">
+						<input type="email" name="email" placeholder="Email" required class="form-control input-lg" value="joestudent@gmail.com" />
+
+						<input type="password" class="form-control input-lg" id="password" placeholder="Password" required="" />
+
+
+						<div class="pwstrength_viewport_progress"></div>
+
+
+						<button type="submit" name="go" class="btn btn-lg btn btn-block">Sign in</button>
+						<div>
+							<a href="#">Create account</a> or <a href="#">reset password</a>
+						</div>
+
+					</form>
+
+					<div class="form-links">
+						<a href="#">www.website.com</a>
+					</div>
+				</section>
+			</div>
+
+			<div class="col-md-4"></div>
+
+
+		</div>
+
+
+
+
+
+
+
 		<p/>
 		<div class="login s2ui_center ui-corner-all" style='text-align:center;'>
 			<div class="login-inner">
