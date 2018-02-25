@@ -20,7 +20,7 @@
 <body>
 
     <div class="container">
-        <h1 class="text-center">BUS PROFILE</h1>
+        %{--<h1 class="text-left">Set Up Route</h1>--}%
         <g:render template="routeForm" />
     </div>
 

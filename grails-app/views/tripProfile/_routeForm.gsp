@@ -1,7 +1,7 @@
-<div class="col-xs-12 col-md-8 col-md-offset-2 text-center">
+<div class="col-xs-12 col-md-8 col-md-offset-2 ">
 
-    <h3>Set Up Route:</h3>
-    <div id="routeSetupForm">
+    <h1 class="text-left">Set Up Route</h1>
+    <div id="routeSetupForm" class="text-center">
         <div class="form-group" id="starting-address-div">
             <input type="text" class="form-control" placeholder="Starting Address" id="starting-address-input">
         </div>
@@ -15,6 +15,6 @@
         </div>
 
         <p id="routeSetupError" class="error"></p>
-        <button id="test-btn" type="submit">click me</button>
+        <button id="test-btn" type="submit" class="btn btn-info btn-sm">Save Route</button>
     </div>
 </div>
