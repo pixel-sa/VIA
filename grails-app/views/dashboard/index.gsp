@@ -157,9 +157,9 @@
             <div class="content">
                 <div class="container-fluid">
 
-                <g:if test="${hasStats}">
 
-                    <div class="row">
+
+                    <div class="row" id="statsRow" <g:if test="${!hasStats}">style="display: none;"</g:if>>
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
                                 <div class="card-content" style="padding-bottom: 35px;">
@@ -214,7 +214,7 @@
                         </div>
 
                     </div>
-                </g:if>
+
                     <div class="row">
                         <div class="col-md-4">
                             <div class="card">

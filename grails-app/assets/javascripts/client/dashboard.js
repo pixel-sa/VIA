@@ -119,6 +119,7 @@ var DASHBOARD = {
             $("#modal-div").html(html);
         },
         updateStatistics: function(statistics) {
+            $("#statsRow").show();
             $("#totalRides").text(statistics.totalBusRides);
             $("#moneySaved").text(statistics.totalMoneySaved);
             $("#carbonSaved").text(statistics.totalCarbonReduced);
