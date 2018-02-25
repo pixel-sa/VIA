@@ -6,80 +6,32 @@
 		<asset:stylesheet src='spring-security-ui-auth.css'/>
 	</head>
 	<body>
-
-
-
-	<div class="container">
-		<div class="row" id="pwd-container">
-			<div class="col-md-4"></div>
-
-			<div class="col-md-4">
-				<section class="login-form">
-					<h3 class="text-center">Login to Busvi</h3>
-					<form method="post" action="#" role="login">
-						<input type="email" name="email" placeholder="Email" required class="form-control input-lg" value="joestudent@gmail.com" />
-
-						<input type="password" class="form-control input-lg" id="password" placeholder="Password" required="" />
-
-
-						<div class="pwstrength_viewport_progress"></div>
-
-
-						<button type="submit" name="go" class="btn btn-lg btn btn-block">Sign in</button>
-						<div>
-							<a href="#">Create account</a> or <a href="#">reset password</a>
-						</div>
-
-					</form>
-
-					<div class="form-links">
-						<a href="#">www.website.com</a>
-					</div>
-				</section>
-			</div>
-
-			<div class="col-md-4"></div>
-
-
-		</div>
-
-
-
-
-
-
-
-		<p/>
-		<div class="login s2ui_center ui-corner-all" style='text-align:center;'>
-			<div class="login-inner">
+		<div class="container" style='text-align:center;'>
+			<div>
 			<s2ui:form type='login' focus='username'>
-				<div class="sign-in">
-				<h2><g:message code='spring.security.ui.login.signin'/></h2>
-				<table>
-					<tr>
-						<td><label for="username"><g:message code='spring.security.ui.login.username'/></label></td>
-						<td><input type="text" name="${securityConfig.apf.usernameParameter}" id="username" class='formLogin' size="20"/></td>
-					</tr>
-					<tr>
-						<td><label for="password"><g:message code='spring.security.ui.login.password'/></label></td>
-						<td><input type="password" name="${securityConfig.apf.passwordParameter}" id="password" class="formLogin" size="20"/></td>
-					</tr>
-					<tr>
-						<td colspan='2'>
-							<input type="checkbox" class="checkbox" name="${securityConfig.rememberMe.parameter}" id="remember_me" checked="checked"/>
-							<label for='remember_me'><g:message code='spring.security.ui.login.rememberme'/></label> |
-							<span class="forgot-link">
-								<g:link controller='register' action='forgotPassword'><g:message code='spring.security.ui.login.forgotPassword'/></g:link>
-							</span>
-						</td>
-					</tr>
-					<tr>
-						<td colspan='2'>
-							<s2ui:linkButton elementId='register' controller='register' messageCode='spring.security.ui.login.register'/>
-							<s2ui:submitButton elementId='loginButton' messageCode='spring.security.ui.login.login'/>
-						</td>
-					</tr>
-				</table>
+				<div class="col-md-4 col-md-offset-4">
+				<h2>Login to Busvi</h2>
+					<div class="form-group">
+						<label for="username">Username</label>
+						<input type="text" name="${securityConfig.apf.usernameParameter}" id="username" required class="form-control input-lg" />
+					</div>
+
+					<div class="form-group">
+						<label for="password">Password</label>
+						<input type="text" name="${securityConfig.apf.passwordParameter}" id="password" required class="form-control input-lg" />
+					</div>
+
+					<div class="form-group">
+						<g:link controller="login" action="">
+							<button type="submit" id="loginButton "class="btn btn-lg btn btn-block">Sign In</button>
+						</g:link>
+					</div>
+
+					<div>
+						<g:link controller="register">Create account</g:link>
+						 or <g:link controller='register' action='forgotPassword'>reset password</g:link>
+					</div>
+
 				</div>
 			</s2ui:form>
 			</div>
