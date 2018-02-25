@@ -44,9 +44,9 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						%{--<a class="navbar-brand" id="logo" href="/">--}%
-						%{--<asset:image alt="via-logo" src="SVG-busvi-logo.svg"/>--}%
-						%{--</a>--}%
+						<a class="navbar-brand" id="logo" href="/">
+						<asset:image alt="via-logo" src="SVG-busvi - no circle.svg"/>
+						</a>
 
 						<h3 class="brand brand-name navbar-left">Busvi</h3>
 
