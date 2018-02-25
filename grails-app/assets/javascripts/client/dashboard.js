@@ -96,23 +96,6 @@ var DASHBOARD = {
         });
     },
 
-    renderRoutesInTable:function (routes) {
-        for(var i = 1; i < routes.length; i ++){
-            var html = "";
-            html += '<tr><td>'+i+'</td></tr>';
-            html += '<tr><td>'+ routes.+'</td></tr>';
-            html += '<tr><td>'+ value.routeName+'</td></tr>';
-
-
-        }
-
-
-        $.each(routes, function (i, value){
-            $("#route-table-body")
-                .html('<tr><td>'+i+'</td></tr>' +'<tr><td>'+value.routeName+'</td></tr>' )
-        });
-    },
-
     html: {
         showLogTripModal: function () {
             var html = "";
