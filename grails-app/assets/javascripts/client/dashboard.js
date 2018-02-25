@@ -13,6 +13,7 @@ var DASHBOARD = {
         DASHBOARD.runtime.logTripToDatabaseLink = logTripToDatabaseLink;
 
         DASHBOARD.logTripButtonClicked();
+        DASHBOARD.addNewRouteEvent();
     },
 
     logTripFormSubmitted: function () {
@@ -59,6 +60,12 @@ var DASHBOARD = {
         });
     },
 
+    addNewRouteEvent: function () {
+        $("#add-new-route-btn").on("click", function () {
+            DASHBOARD.html.showNewRouteModal();
+        })
+    },
+
     formInputEvents: function () {
         $('#route-select').on('change',function() {
             DASHBOARD.runtime.routeSelectedId = $(this).val();
@@ -103,8 +110,43 @@ var DASHBOARD = {
             html += '<input class="form-control" id="bus-trip-date" placeholder="Select Date">';
             html += '</div>';
             html += '<div class="form-group">';
-            html += '<div class="col-sm-10 text-center">';
+            html += '<div class="col-sm-10 col-sm-offset-1 text-center">';
             html += '<button type="submit" class="btn btn-default" id="log-trip-btn">Save Ride</button>';
+            html += '</div>';
+            html += '</div>';
+            html += '</form>';
+            html += '</div>';
+            html += '<div class="modal-footer">';
+            html += '</div>';
+            html += '</div>';
+            html += '</div>';
+            html += '</div>';
+
+            $("#modal-div").html(html);
+        },
+        showNewRouteModal: function () {
+            var html = "";
+            html += '<div id="add-new-route-modal" class="modal fade" role="dialog">';
+            html += '<div class="modal-dialog">';
+            html += '<div class="modal-content">';
+            html += '<div class="modal-header">';
+            html += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
+            html += '<h4 class="modal-title">Add new route</h4>';
+            html += '</div>';
+            html += '<div class="modal-body">';
+            html += '<form class="form-horizontal" role="form" id="log-trip-form">';
+            html += '<div class="form-group">';
+            html += '<input type="text" class="form-control" placeholder="Starting Address" id="starting-address-input">';
+            html += '</div>';
+            html += '<div class="form-group">';
+            html += '<input type="text" class="form-control" placeholder="Ending Address" id="ending-address-input">';
+            html += '</div>';
+            html += '<div class="form-group">';
+            html += '<input type="text" class="form-control" placeholder="Trip Name" id="route-name-input">';
+            html += '</div>';
+            html += '<div class="form-group">';
+            html += '<div class="col-sm-10 col-sm-offset-1 text-center">';
+            html += '<button type="submit" class="btn btn-default" id="add-new-route-btn">Save Route</button>';
             html += '</div>';
             html += '</div>';
             html += '</form>';

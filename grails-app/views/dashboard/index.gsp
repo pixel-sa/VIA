@@ -430,7 +430,8 @@
 
 
 
-
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyx0uEogAaWBQzcFkUAnz0vAC0I12pZNc&libraries=places" ></script>
+    <asset:javascript src="tripProfile.js"></asset:javascript>
 
     <script type="text/javascript">
         $(document).ready(function() {

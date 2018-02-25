@@ -114,8 +114,13 @@ $(document).ready(function () {
     }
 
     /// Calling initial functions ///
+   $("#starting-address-input").focus(function(){
     saveStartingAddress();
+   }) ;
+    $("#ending-address-input").focus(function() {
+
     saveEndingAddress();
+    });
 
     /// AJAX CALLS ///
 
