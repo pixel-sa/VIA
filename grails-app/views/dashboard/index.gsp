@@ -24,15 +24,15 @@
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     <li class="active">
-                        <a href="dashboard.html">
+                        <a href="/dashboard/index">
                             <i class="material-icons">dashboard</i>
                             <p>Dashboard</p>
                         </a>
                     </li>
                     <li>
-                        <a href="./user.html">
-                            <i class="material-icons">person</i>
-                            <p>User Profile</p>
+                        <a href="/dashboard/leaderboard">
+                            <i class="material-icons">list</i>
+                            <p>Leaderboard</p>
                         </a>
                     </li>
                     <li>
